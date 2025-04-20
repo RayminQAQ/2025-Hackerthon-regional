@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge節點資訊整合平台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 側邊欄導航 -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                <h1>Edge Node</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-chart-line"></i> 儀表板</a></li>
+                    <li><a href="#devices"><i class="fas fa-server"></i> 裝置管理</a></li>
+                    <li><a href="#alerts"><i class="fas fa-bell"></i> 警示設定</a></li>
+                    <li><a href="#settings"><i class="fas fa-cog"></i> 系統設定</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- 主內容區 -->
+        <main class="content">
+            <!-- 儀表板頁面 -->
+            <section id="dashboard" class="page active">
+                <header>
+                    <h2>儀表板</h2>
+                    <div class="user-info">
+                        <button id="refresh-btn"><i class="fas fa-sync-alt"></i> 重新整理</button>
+                    </div>
+                </header>
+                
+                <div class="dashboard-grid">
+                    <div class="card summary-card">
+                        <div class="card-header">
+                            <h3>系統摘要</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="summary-item">
+                                <i class="fas fa-microchip"></i>
+                                <div>
+                                    <h4>已連接節點</h4>
+                                    <p id="connected-nodes">0</p>
+                                </div>
+                            </div>
+                            <div class="summary-item">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <div>
+                                    <h4>警示數量</h4>
+                                    <p id="alert-count">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card nodes-card">
+                        <div class="card-header">
+                            <h3>節點狀態</h3>
+                            <button id="add-node-btn" class="small-btn"><i class="fas fa-plus"></i> 新增節點</button>
+                        </div>
+                        <div class="card-content" id="nodes-list">
+                            <!-- 節點列表將會動態產生在此 -->
+                        </div>
+                    </div>
+
+                    <div class="card sensor-data">
+                        <div class="card-header">
+                            <h3>感測器資訊</h3>
+                            <select id="node-selector">
+                                <option value="">選擇節點</option>
+                            </select>
+                        </div>
+                        <div class="card-content" id="sensor-readings">
+                            <!-- 感測器資訊將會動態產生在此 -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 裝置管理頁面 -->
+            <section id="devices" class="page">
+                <header>
+                    <h2>裝置管理</h2>
+                    <div class="user-info">
+                        <button id="add-device-btn"><i class="fas fa-plus"></i> 新增裝置</button>
+                    </div>
+                </header>
+                <div class="devices-list" id="devices-container">
+                    <!-- 裝置列表將會動態產生在此 -->
+                </div>
+            </section>
+
+            <!-- 警示設定頁面 -->
+            <section id="alerts" class="page">
+                <header>
+                    <h2>警示設定</h2>
+                </header>
+                <div class="alerts-container">
+                    <div class="alerts-list" id="alerts-list">
+                        <!-- 警示列表將會動態產生在此 -->
+                    </div>
+                    <div class="alert-form">
+                        <h3>設定新警示</h3>
+                        <form id="new-alert-form">
+                            <div class="form-group">
+                                <label for="alert-node">節點</label>
+                                <select id="alert-node" required>
+                                    <option value="">選擇節點</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="alert-sensor">感測器</label>
+                                <select id="alert-sensor" required>
+                                    <option value="">選擇感測器</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="alert-condition">條件</label>
+                                <select id="alert-condition" required>
+                                    <option value="greater">大於</option>
+                                    <option value="less">小於</option>
+                                    <option value="equal">等於</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="alert-value">閾值</label>
+                                <input type="number" id="alert-value" required>
+                            </div>
+                            <button type="submit">新增警示</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 系統設定頁面 -->
+            <section id="settings" class="page">
+                <header>
+                    <h2>系統設定</h2>
+                </header>
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>API 設定</h3>
+                        <form id="api-settings-form">
+                            <div class="form-group">
+                                <label for="chatgpt-api-key">ChatGPT API 金鑰</label>
+                                <input type="password" id="chatgpt-api-key">
+                            </div>
+                            <button type="submit">儲存</button>
+                        </form>
+                    </div>
+                    <div class="settings-card">
+                        <h3>資料設定</h3>
+                        <button id="export-data-btn">匯出資料</button>
+                        <button id="import-data-btn">匯入資料</button>
+                        <button id="clear-data-btn" class="danger">清除所有資料</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 模態視窗 - 新增裝置 -->
+    <div id="add-device-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>新增裝置</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-device-form">
+                    <div class="form-group">
+                        <label for="device-name">裝置名稱</label>
+                        <input type="text" id="device-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="device-location">位置</label>
+                        <input type="text" id="device-location" required>
+                    </div>
+                    <div class="form-group">
+                        <label>感測器類型</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="sensor-type" value="vibration"> 環境震動</label>
+                            <label><input type="checkbox" name="sensor-type" value="soil-moisture"> 土壤濕度</label>
+                            <label><input type="checkbox" name="sensor-type" value="soil-liquefaction"> 土壤液化</label>
+                            <label><input type="checkbox" name="sensor-type" value="temperature"> 溫度</label>
+                            <label><input type="checkbox" name="sensor-type" value="wind"> 風力</label>
+                            <label><input type="checkbox" name="sensor-type" value="strain"> 應變</label>
+                            <label><input type="checkbox" name="sensor-type" value="solar"> 太陽能</label>
+                        </div>
+                    </div>
+                    <button type="submit">新增</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态窗口 - 节点详情 -->
+    <div id="node-detail-modal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h3>節點詳情</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="node-detail-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 JavaScript 檔案 -->
+    <script src="js/db.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/devices.js"></script>
+    <script src="js/alerts.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 

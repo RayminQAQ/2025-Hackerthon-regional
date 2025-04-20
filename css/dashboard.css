@@ -1,0 +1,431 @@
+/* Dashboard Grid Layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.summary-card {
+    grid-column: span 1;
+}
+
+.nodes-card {
+    grid-column: span 2;
+}
+
+.sensor-data {
+    grid-column: span 3;
+}
+
+/* Summary Card */
+.summary-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.summary-item:last-child {
+    margin-bottom: 0;
+}
+
+.summary-item i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    background-color: rgba(0, 166, 153, 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    margin-right: var(--spacing-md);
+}
+
+.summary-item h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--medium-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.summary-item p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Node List */
+.node-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.node-item:last-child {
+    border-bottom: none;
+}
+
+.node-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.node-name {
+    font-weight: 500;
+    margin-right: var(--spacing-sm);
+}
+
+.node-location {
+    color: var(--medium-color);
+    font-size: 0.9rem;
+}
+
+.node-status {
+    margin-right: var(--spacing-md);
+}
+
+.node-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.node-actions button {
+    background: none;
+    color: var(--medium-color);
+    padding: var(--spacing-xs);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.node-actions button:hover {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+.node-actions button i {
+    margin: 0;
+}
+
+/* Sensor Readings */
+.sensor-readings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: var(--spacing-md);
+}
+
+.sensor-card {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sensor-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.sensor-name {
+    font-size: 0.9rem;
+    color: var(--medium-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.sensor-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.sensor-unit {
+    font-size: 0.8rem;
+    color: var(--medium-color);
+}
+
+/* Device Management */
+.devices-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: var(--spacing-md);
+}
+
+.device-card {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.device-header {
+    padding: var(--spacing-md);
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.device-header h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.device-content {
+    padding: var(--spacing-md);
+}
+
+.device-info {
+    margin-bottom: var(--spacing-md);
+}
+
+.device-info p {
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+}
+
+.device-info p i {
+    width: 20px;
+    margin-right: var(--spacing-sm);
+    color: var(--secondary-color);
+}
+
+.device-sensors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.sensor-tag {
+    background-color: rgba(0, 166, 153, 0.1);
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+}
+
+.sensor-tag i {
+    margin-right: var(--spacing-xs);
+    font-size: 0.75rem;
+}
+
+.device-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+}
+
+/* Alerts Page */
+.alerts-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: var(--spacing-md);
+}
+
+.alerts-list {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+}
+
+.alert-item {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.alert-item:last-child {
+    border-bottom: none;
+}
+
+.alert-info {
+    display: flex;
+    align-items: center;
+}
+
+.alert-icon {
+    font-size: 1.2rem;
+    margin-right: var(--spacing-sm);
+}
+
+.alert-icon.warning {
+    color: var(--warning-color);
+}
+
+.alert-icon.error {
+    color: var(--danger-color);
+}
+
+.alert-details h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.alert-details p {
+    font-size: 0.9rem;
+    color: var(--medium-color);
+}
+
+.alert-actions button {
+    background: none;
+    color: var(--medium-color);
+    padding: var(--spacing-xs);
+}
+
+.alert-actions button:hover {
+    color: var(--dark-color);
+    background: none;
+}
+
+.alert-form {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+}
+
+.alert-form h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Settings Page */
+.settings-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--spacing-md);
+}
+
+.settings-card {
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+}
+
+.settings-card h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.settings-card button {
+    margin-right: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Node Detail Modal */
+#node-detail-content {
+    padding: var(--spacing-md);
+}
+
+.node-detail-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.node-detail-header .node-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    background-color: rgba(0, 166, 153, 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    margin-right: var(--spacing-md);
+}
+
+.node-detail-header .node-title h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.node-detail-header .node-title p {
+    color: var(--medium-color);
+}
+
+.node-detail-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.node-detail-info .info-item {
+    display: flex;
+    align-items: center;
+}
+
+.node-detail-info .info-item i {
+    width: 20px;
+    margin-right: var(--spacing-sm);
+    color: var(--secondary-color);
+}
+
+.node-detail-sensors {
+    margin-bottom: var(--spacing-md);
+}
+
+.node-detail-sensors h5 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Responsive Design for Dashboard */
+@media screen and (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .summary-card {
+        grid-column: span 1;
+    }
+
+    .nodes-card {
+        grid-column: span 1;
+    }
+
+    .sensor-data {
+        grid-column: span 2;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card, .nodes-card, .sensor-data {
+        grid-column: span 1;
+    }
+
+    .sensor-readings {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .alerts-container {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-container {
+        grid-template-columns: 1fr;
+    }
+} 
