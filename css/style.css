@@ -11,6 +11,7 @@
     --light-color: #F7F7F7;
     --white-color: #FFFFFF;
     --danger-color: #E31C5F;
+    --danger-color-rgb: 227, 28, 95;
     --warning-color: #FFB400;
     --success-color: #008489;
     --info-color: #428BCA;
@@ -447,4 +448,42 @@ textarea:focus {
     .checkbox-group label {
         flex-basis: 100%;
     }
+}
+
+/* Danger Warning Styles */
+.danger-warning-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(var(--danger-color-rgb, 227, 28, 95), 0.95);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    text-align: center;
+    max-width: 80%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--danger-color-rgb, 227, 28, 95), 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(var(--danger-color-rgb, 227, 28, 95), 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--danger-color-rgb, 227, 28, 95), 0);
+    }
+}
+
+.warning-icon {
+    margin-bottom: 15px;
+}
+
+.warning-icon i {
+    font-size: 48px;
+    color: white;
 } 

@@ -122,21 +122,21 @@ const DB = {
                         deviceId: device1Id,
                         sensorType: 'temperature',
                         condition: 'greater',
-                        threshold: 35,
+                        threshold: 32,
                         createdAt: new Date().getTime()
                     },
                     {
                         deviceId: device2Id,
                         sensorType: 'soil-moisture',
                         condition: 'less',
-                        threshold: 20,
+                        threshold: 15,
                         createdAt: new Date().getTime()
                     },
                     {
                         deviceId: device3Id,
                         sensorType: 'vibration',
                         condition: 'greater',
-                        threshold: 80,
+                        threshold: 10,
                         createdAt: new Date().getTime()
                     }
                 ];
@@ -157,13 +157,13 @@ const DB = {
     async generateMockSensorData(deviceId, sensorTypes) {
         const now = new Date().getTime();
         const sensorInfoMap = {
-            'vibration': { minValue: 5, maxValue: 70, unit: 'Hz' },
-            'soil-moisture': { minValue: 20, maxValue: 85, unit: '%' },
-            'soil-liquefaction': { minValue: 0, maxValue: 30, unit: '%' },
-            'temperature': { minValue: 15, maxValue: 32, unit: '°C' },
-            'wind': { minValue: 2, maxValue: 15, unit: 'm/s' },
-            'strain': { minValue: 100, maxValue: 1000, unit: 'μm/m' },
-            'solar': { minValue: 100, maxValue: 1200, unit: 'W/m²' }
+            'vibration': { minValue: 0.5, maxValue: 15, unit: 'Hz' },  // 環境震動更現實的範圍
+            'soil-moisture': { minValue: 10, maxValue: 50, unit: '%' },  // 土壤濕度一般不會太高
+            'soil-liquefaction': { minValue: 0, maxValue: 15, unit: '%' },  // 土壤液化風險一般較低
+            'temperature': { minValue: 15, maxValue: 35, unit: '°C' },  // 台灣溫度範圍
+            'wind': { minValue: 0, maxValue: 25, unit: 'm/s' },  // 風速，25m/s約為颱風等級
+            'strain': { minValue: 50, maxValue: 500, unit: 'μm/m' },  // 結構應變值
+            'solar': { minValue: 0, maxValue: 1000, unit: 'W/m²' }  // 太陽能輻射，晴天約1000W/m²
         };
         
         // 為每個感測器類型產生3筆資料（最近3小時的資料）

@@ -470,50 +470,50 @@ const Dashboard = {
                 name: '環境震動',
                 icon: 'fas fa-wave-square',
                 unit: 'Hz',
-                minValue: 0,
-                maxValue: 100
+                minValue: 0.5,
+                maxValue: 15
             },
             'soil-moisture': {
                 name: '土壤濕度',
                 icon: 'fas fa-tint',
                 unit: '%',
-                minValue: 0,
-                maxValue: 100
+                minValue: 10,
+                maxValue: 50
             },
             'soil-liquefaction': {
                 name: '土壤液化',
                 icon: 'fas fa-water',
                 unit: '%',
                 minValue: 0,
-                maxValue: 100
+                maxValue: 15
             },
             'temperature': {
                 name: '溫度',
                 icon: 'fas fa-thermometer-half',
                 unit: '°C',
-                minValue: -20,
-                maxValue: 50
+                minValue: 15,
+                maxValue: 35
             },
             'wind': {
                 name: '風力',
                 icon: 'fas fa-wind',
                 unit: 'm/s',
                 minValue: 0,
-                maxValue: 30
+                maxValue: 25
             },
             'strain': {
                 name: '應變',
                 icon: 'fas fa-arrows-alt-h',
                 unit: 'μm/m',
-                minValue: 0,
-                maxValue: 2000
+                minValue: 50,
+                maxValue: 500
             },
             'solar': {
                 name: '太陽能',
                 icon: 'fas fa-sun',
                 unit: 'W/m²',
                 minValue: 0,
-                maxValue: 1500
+                maxValue: 1000
             }
         };
         
